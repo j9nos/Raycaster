@@ -54,14 +54,10 @@ public final class Player {
     }
 
     public static void update() {
-        if (upSignal)
-            move(true);
-        if (leftSignal)
-            rotate(true);
-        if (downSignal)
-            move(false);
-        if (rightSignal)
-            rotate(false);
+        if (upSignal) move(true);
+        if (leftSignal) rotate(true);
+        if (downSignal) move(false);
+        if (rightSignal) rotate(false);
     }
 
     private static void rotate(final boolean positive) {
