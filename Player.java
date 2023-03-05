@@ -1,20 +1,17 @@
 public final class Player {
 
-    private static final double
-		FIELD_OF_VIEW = 70d,
-		FIELD_OF_VIEW_HALF = FIELD_OF_VIEW * .5d,
-		CIRCLE = 360d,
-		TORQUE = 5d,
-		MOVEMENT_PRECISION = .1d;
-    private static double
-		x = 7d,
-		y = 8d,
-		angle = 115d;
-    private static boolean
-		upSignal,
-		leftSignal,
-		downSignal,
-		rightSignal;
+    private static final double FIELD_OF_VIEW = 70d,
+            FIELD_OF_VIEW_HALF = FIELD_OF_VIEW * .5d,
+            CIRCLE = 360d,
+            TORQUE = 5d,
+            MOVEMENT_PRECISION = .1d;
+    private static double x = 7d,
+            y = 8d,
+            angle = 115d;
+    private static boolean upSignal,
+            leftSignal,
+            downSignal,
+            rightSignal;
 
     private Player() {
 
@@ -57,18 +54,14 @@ public final class Player {
     }
 
     public static void update() {
-        if (upSignal) {
+        if (upSignal)
             move(true);
-        }
-        if (leftSignal) {
+        if (leftSignal)
             rotate(true);
-        }
-        if (downSignal) {
+        if (downSignal)
             move(false);
-        }
-        if (rightSignal) {
+        if (rightSignal)
             rotate(false);
-        }
     }
 
     private static void rotate(final boolean positive) {
@@ -80,8 +73,8 @@ public final class Player {
         final double cos = Math.cos(radians) * MOVEMENT_PRECISION;
         final double sin = Math.sin(radians) * MOVEMENT_PRECISION;
 
-        final double x2 = positive ? x + cos : x - cos;
-        final double y2 = positive ? y - sin : y + sin;
+        final double x2 = x + (positive ? cos : -cos);
+        final double y2 = y + (positive ? -sin : sin);
         x = Room.isVoid(x2, y) ? x2 : x;
         y = Room.isVoid(x, y2) ? y2 : y;
     }

@@ -10,10 +10,9 @@ import java.util.concurrent.TimeUnit;
 
 public final class Raycaster extends JPanel {
 
-    private final Color
-		sky = new Color(23, 0, 44),
-		wall = new Color(187, 0, 0),
-		ground = new Color(43, 175, 0);
+    private final Color sky = new Color(23, 0, 44),
+            wall = new Color(187, 0, 0),
+            ground = new Color(43, 175, 0);
     private final double renderingPrecision = .01d;
 
     private Raycaster() {
@@ -84,8 +83,8 @@ public final class Raycaster extends JPanel {
 
             final double distanceX = Player.getX() - rayX;
             final double distanceY = Player.getY() - rayY;
-            final double pythagoreanDistance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-            final double distance = pythagoreanDistance * Math.cos(Math.toRadians(rayAngle - Player.getAngle()));
+            final double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY)
+                    * Math.cos(Math.toRadians(rayAngle - Player.getAngle()));
 
             final double stripeLength = getHeight() / distance;
             final double halfHeight = getHeight() * .5d;
